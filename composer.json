@@ -1,0 +1,19 @@
+{
+    "name": "dhruvang/generate-rules",
+    "description": "This will generate rules for the migrations just by simple artisan command",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Dhruvang\\GenerateRules\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "dhruvangdave",
+            "email": "dhruvang.dave@ghanshyamdigital.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
