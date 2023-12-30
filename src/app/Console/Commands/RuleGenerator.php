@@ -46,7 +46,7 @@ class RuleGenerator extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Use this command to generate rules from migration file name';
 
     /**
      * The table name.
@@ -154,7 +154,8 @@ class RuleGenerator extends Command
             mkdir($requestsDirectory, 0755, true); // Create the directory if it doesn't exist
         }
 
-        $stubPath = 'stubs/customizedRequest.stub';
+        $packageBasePath = __DIR__ . '/../../..';
+        $stubPath = $packageBasePath . '/stubs/customizedRequest.stub';
         $content = file_get_contents($stubPath);
 
         // Replace placeholders in the stub file with actual values

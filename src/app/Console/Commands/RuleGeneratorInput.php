@@ -19,7 +19,7 @@ class RuleGeneratorInput extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Use this command to generate rules from migration';
 
     /**
      * Execute the console command.
