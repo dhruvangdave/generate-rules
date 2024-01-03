@@ -23,15 +23,12 @@ class GenerateRulesServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerRoutes();
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'generateRules');
+        $this->registerCommands();
+        $this->registerPublishing();
 
         Route::middlewareGroup('generateRules', config('generateRules.middleware', []));
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'generateRules');
 
-        $this->registerCommands();
-
-        $this->publishes([
-            __DIR__.'/../public' => public_path('vendor/generateRules'),
-        ], ['generateRules-assets', 'laravel-assets']);
     }
 
     /**
@@ -73,6 +70,24 @@ class GenerateRulesServiceProvider extends ServiceProvider
                 RuleGenerator::class,
                 RuleGeneratorInput::class,
             ]);
+        }
+    }
+
+    /**
+     * Register the package's publishable resources.
+     *
+     * @return void
+     */
+    private function registerPublishing()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../public' => public_path('vendor/generateRules'),
+            ], 'generateRules-assets');
+
+            $this->publishes([
+                __DIR__.'/../config' => config_path('generateRules.php'),
+            ], 'generateRules-assets');
         }
     }
 }
