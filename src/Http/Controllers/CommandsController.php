@@ -6,22 +6,50 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Dhruvang\GenerateRules\GenerateRules;
+use Illuminate\Support\Facades\Artisan;
 
-class GenerateRulesController extends Controller
+class CommandsController extends Controller
 {
     /**
-     * Display the Telescope view.
+     * Display the GenerateRules view.
      *
-     * @return Application|Factory|View|\Illuminate\Foundation\Application
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        return view('generateRules::layout', [
-            'cssFile' => 'app.css',
-            'telescopeScriptVariables' => GenerateRules::scriptVariables(),
+        return response()->json([
+            'entries' => 'Okay',
+            'status' => 'Status',
         ]);
+    }
+
+    /**
+     * Clear View.
+     *
+     * @return JsonResponse
+     */
+    public function clearView(): JsonResponse
+    {
+        try {
+            Artisan::call('view:clear');
+            $result = Artisan::output();
+
+            return response()->json([
+                'result' => $result,
+                'alert' => [
+                    'message' => 'View cleared successfully',
+                    'type' => 'success',
+                    'autoClose' => true,
+                ],
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 
     /**
