@@ -83,11 +83,12 @@ class GenerateRulesServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../public' => public_path('vendor/generateRules'),
-            ], ['generateRules-assets', 'laravel-assets']);
+            ], 'generateRules-assets');
 
             $this->publishes([
-                __DIR__.'/../config/generateRules.php' => config_path('generateRules.php'),
-            ], ['generateRules-assets', 'laravel-assets']);
+                __DIR__.'/../config' => config_path('generateRules.php'),
+            ], 'generateRules-assets');
         }
+//        torch_hRozJEvUx8nV0VTeP9R8ucIwDhVvqOr1COVgcLbj
     }
 }

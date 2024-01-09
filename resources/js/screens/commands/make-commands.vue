@@ -42,455 +42,130 @@ export default {
 
     methods: {
         makeCast() {
-            this.loadingCast = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-cast', {'name': 'name'})
-                .then((res) => {
-                    console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response.data.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingCast = false;
-                });
+            const type = 'cast'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeChannel() {
-            this.loadingChannel = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-channel')
-                .then((res) => {
-                    console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response.data.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingChannel = false;
-                });
+            const type = 'channel'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeCommand() {
-            this.loadingCommand = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-command')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingCommand = false;
-                });
+            const type = 'command'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeComponent() {
-            this.loadingComponent = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-component')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingComponent = false;
-                });
+            const type = 'component'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeController() {
-            this.loadingController = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-controller')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingController = false;
-                });
+            const type = 'controller'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         // Id needs to be taken from the user
         makeEvent() {
-            this.loadingEvent = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-event', {'id': '12345'})
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingEvent = false;
-                });
+            const type = 'event'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeException() {
-            this.loadingException = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-exception')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingException = false;
-                });
+            const type = 'exception'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         // Queues need to be taken from the user
         makeFactory() {
-            this.loadingFactory = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-factory', { 'queues': '12345'})
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingFactory = false;
-                });
+            const type = 'factory'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeJob() {
-            this.loadingJob = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-job')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingJob = false;
-                });
+            const type = 'job'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeListener() {
-            this.loadingListener = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-listener')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingListener = false;
-                });
+            const type = 'listener'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeMail() {
-            this.loadingMail = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-mail')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingMail = false;
-                });
+            const type = 'mail'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeMiddleware() {
-            this.loadingMiddleware = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-middleware')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingMiddleware = false;
-                });
+            const type = 'middleware'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeMigration() {
-            this.loadingMigration = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-migration')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingMigration = false;
-                });
+            const type = 'migration'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeModel() {
-            this.loadingModel = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-model')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingModel = false;
-                });
+            const type = 'model'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeNotification() {
-            this.loadingNotification = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-notification')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingNotification = false;
-                });
+            const type = 'notification'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeObserver() {
-            this.loadingObserver = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-observer')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingObserver = false;
-                });
+            const type = 'observer'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makePolicy() {
-            this.loadingPolicy = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-policy')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingPolicy = false;
-                });
+            const type = 'policy'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeProvider() {
-            this.loadingProvider = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-provider')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingProvider = false;
-                });
+            const type = 'provider'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeRequest() {
-            this.loadingRequest = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-request')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingRequest = false;
-                });
+            const type = 'request'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeResource() {
-            this.loadingResource = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-resource')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingResource = false;
-                });
+            const type = 'resource'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeRule() {
-            this.loadingRule = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-rule')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingRule = false;
-                });
+            const type = 'rule'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeScope() {
-            this.loadingScope = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-scope')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingScope = false;
-                });
+            const type = 'scope'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeSeeder() {
-            this.loadingSeeder = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-seeder')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingSeeder = false;
-                });
+            const type = 'seeder'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeTest() {
-            this.loadingTest = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-test')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingTest = false;
-                });
+            const type = 'test'
+            this.$router.push({ name: 'make', query: { type }  })
         },
 
         makeView() {
-            this.loadingView = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/make-view')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingView = false;
-                });
+            const type = 'view'
+            this.$router.push({ name: 'make', query: { type }  })
         },
     }
 }

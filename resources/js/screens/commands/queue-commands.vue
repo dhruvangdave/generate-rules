@@ -464,7 +464,7 @@ export default {
                     </span>
                 <span v-else>Queue Table</span>
             </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Queue Work"
+            <button class="btn btn-primary text-center" :disabled="true" title="Queue Work"
                     @click.prevent="queueWork">
                     <span v-if="loadingWork" class="icon spin fill-text-color">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"

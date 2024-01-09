@@ -75,21 +75,9 @@ export default {
         },
 
         eventList() {
-            this.loadingList = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/event-list')
-                .then((res) => {
-                    console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response.data.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingList = false;
-                });
+            const route = 'event-list';
+            const title = 'Event List';
+            this.$router.push({ name: 'command-logs-page', query: { route, title } });
         },
     }
 }

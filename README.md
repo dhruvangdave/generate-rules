@@ -1,11 +1,4 @@
-# Steps to Install the package :
-
-- You can install the project by
-```angular2html
-composer require dhruvang/generate-rules
-```
-
-## Steps for Rules Generator Commands: 
+## Steps : 
 
 - Start the project.
 - Run the migration, if yet to run. 

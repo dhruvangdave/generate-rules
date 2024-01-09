@@ -42,7 +42,7 @@ export default {
     <div slot="cache-commands">
         <h6 class="px-3 pt-3 mb-0 text-sm">Vendor Commands</h6>
         <div class="p-3 d-flex" style="gap: 1rem;">
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Vendor Publish"
+            <button class="btn btn-primary text-center" :disabled="true" title="Vendor Publish"
                     @click.prevent="vendorPublish">
                     <span v-if="loadingPublish" class="icon spin fill-text-color">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"

@@ -154,7 +154,7 @@ class RuleGenerator extends Command
             mkdir($requestsDirectory, 0755, true); // Create the directory if it doesn't exist
         }
 
-        $packageBasePath = __DIR__ . '/../../..';
+        $packageBasePath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..';
         $stubPath = $packageBasePath . '/stubs/customizedRequest.stub';
         $content = file_get_contents($stubPath);
 
@@ -671,7 +671,10 @@ class RuleGenerator extends Command
                 break;
             case 'unique':
                 // Assuming the first parameter is the table name and the second is the column name
-                $validationRules[] = "unique:{$this->tableName},{$stringFieldName}";
+                if ($this->tableName && $stringFieldName) {
+                    $validationRules[] = "unique:{$this->tableName},{$stringFieldName}";
+                }
+                $validationRules[] = 'required';
                 break;
             case 'primary':
                 $validationRules[] = 'primary';

@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export default {
     props: [
-        'resource', 'title', 'showAllFamily', 'hideSearch'
+        'resource', 'title', 'showAllFamily', 'hideSearch', 'userInput'
     ],
 
 
@@ -18,6 +18,7 @@ export default {
             familyHash: '',
             entries: [],
             ready: false,
+            defaultUserInput: '',
             recordingStatus: 'enabled',
             lastEntryIndex: '',
             hasMoreEntries: true,
@@ -116,6 +117,9 @@ export default {
                 this.hasMoreEntries = response.data.entries.length >= this.entriesPerRequest;
 
                 this.recordingStatus = response.data.status;
+
+                this.defaultUserInput = response.data.userInput;
+                this.$emit('defaultInputUpdated', response.data.userInput);
 
                 if (_.isFunction(after)) {
                     after(
@@ -293,7 +297,7 @@ export default {
         </div>
 
 
-        <div v-if="ready && entries.length == 0"
+        <div v-if="ready && entries.length === 0"
              class="d-flex flex-column align-items-center justify-content-center card-bg-secondary p-5 bottom-radius">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" class="fill-text-color" style="width: 200px;">
                 <path fill-rule="evenodd"

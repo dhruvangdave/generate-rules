@@ -22,88 +22,64 @@ export default {
 
     methods: {
         dbMonitor() {
-            this.loadingMonitor = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/db-monitor')
-                .then((res) => {
-                    console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response.data.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingMonitor = false;
-                });
+            const route = 'db-monitor';
+            const title = 'Database Monitor List';
+            this.$router.push({ name: 'command-logs-page', query: { route, title } });
         },
         dbSeed() {
-            this.loadingMonitor = true;
+            this.loadingSeed = true;
             axios.post(Telescope.basePath + '/generate-rules-api/db-seed' , {'class': 'DatabaseSeeder'})
                 .then((res) => {
                     console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
                     this.alertSuccess(res.data.result);
                 })
                 .catch(error => {
                     this.alertError('Error : ' + (error.response.data.error || error.message));
                 })
                 .finally(() => {
-                    this.loadingMonitor = false;
+                    this.loadingSeed = false;
                 });
         },
         dbShow() {
-            this.loadingMonitor = true;
+            this.loadingShow = true;
             axios.post(Telescope.basePath + '/generate-rules-api/db-show')
                 .then((res) => {
                     console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
                     this.alertSuccess(res.data.result);
                 })
                 .catch(error => {
                     this.alertError('Error : ' + (error.response.data.error || error.message));
                 })
                 .finally(() => {
-                    this.loadingMonitor = false;
+                    this.loadingShow = false;
                 });
         },
         dbTable() {
-            this.loadingMonitor = true;
+            this.loadingTable = true;
             axios.post(Telescope.basePath + '/generate-rules-api/db-table')
                 .then((res) => {
                     console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
                     this.alertSuccess(res.data.result);
                 })
                 .catch(error => {
                     this.alertError('Error : ' + (error.response.data.error || error.message));
                 })
                 .finally(() => {
-                    this.loadingMonitor = false;
+                    this.loadingTable = false;
                 });
         },
         dbWipe() {
-            this.loadingMonitor = true;
+            this.loadingWipe = true;
             axios.post(Telescope.basePath + '/generate-rules-api/db-wipe')
                 .then((res) => {
                     console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
                     this.alertSuccess(res.data.result);
                 })
                 .catch(error => {
                     this.alertError('Error : ' + (error.response.data.error || error.message));
                 })
                 .finally(() => {
-                    this.loadingMonitor = false;
+                    this.loadingWipe = false;
                 });
         },
     }
@@ -125,7 +101,6 @@ export default {
                     </span>
                 <span v-else>Database Monitor</span>
             </button>
-            <!--Take the input from the user for the "class"-->
             <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Database Seed"
                     @click.prevent="dbSeed">
                     <span v-if="loadingSeed" class="icon spin fill-text-color">

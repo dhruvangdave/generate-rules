@@ -65,7 +65,7 @@ class RouteCommandsController extends Controller
             $result = Artisan::output();
 
             return response()->json([
-                'result' => json_encode($result),
+                'result' => $result,
             ]);
         } catch (\Exception $e) {
             return response()->json([

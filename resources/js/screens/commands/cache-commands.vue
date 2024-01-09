@@ -26,9 +26,6 @@ export default {
             axios.post(Telescope.basePath + '/generate-rules-api/cache-clear')
                 .then((res) => {
                     console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
                     this.alertSuccess(res.data.result);
                 })
                 .catch(error => {
@@ -39,23 +36,8 @@ export default {
                 });
         },
 
-        // @todo key need to be rendered dynamically
         cacheForget() {
-            this.loadingForget = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/cache-forget', {'key': 'Okay'})
-                .then((res) => {
-                    console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response.data.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingForget = false;
-                });
+            this.$router.push({ name: 'cache-forget' });
         },
 
         cachePruneStaleTags() {
@@ -63,9 +45,6 @@ export default {
             axios.post(Telescope.basePath + '/generate-rules-api/cache-prune-stale-tags')
                 .then((res) => {
                     console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
                     this.alertSuccess(res.data.result);
                 })
                 .catch(error => {
@@ -81,9 +60,6 @@ export default {
             axios.post(Telescope.basePath + '/generate-rules-api/cache-table')
                 .then((res) => {
                     console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
                     this.alertSuccess(res.data.result);
                 })
                 .catch(error => {
@@ -112,7 +88,7 @@ export default {
                     </span>
                 <span v-else>Cache Clear</span>
             </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Clear View"
+            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Cache Forget"
                     @click.prevent="cacheForget">
                     <span v-if="loadingForget" class="icon spin fill-text-color">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"

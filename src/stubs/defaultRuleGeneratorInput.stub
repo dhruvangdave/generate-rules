@@ -1,0 +1,17 @@
+<?php
+
+function (Illuminate\Database\Schema\Blueprint $table) {
+    $table->string('first_name', 100);
+    $table->string('last_name', 100);
+    $table->string('email');
+    $table->foreignId('address_id')->constrained();
+    $table->text('bio')->nullable();
+    $table->enum('gender', ['m', 'f', 'd']);
+    $table->date('birth');
+    $table->year('graduated');
+    $table->float('body_size');
+    $table->unsignedTinyInteger('children_count')->nullable();
+    $table->integer('account_balance');
+    $table->unsignedInteger('net_income');
+    $table->boolean('send_newsletter')->nullable();
+};

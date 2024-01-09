@@ -57,21 +57,9 @@ export default {
         },
 
         routeList() {
-            this.loadingList = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/route-list')
-                .then((res) => {
-                    console.log('res', res?.data);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response?.data?.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingList = false;
-                });
+            const route = 'route-list';
+            const title = 'Route List';
+            this.$router.push({ name: 'command-logs-page', query: { route, title } });
         }
     }
 }

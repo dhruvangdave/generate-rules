@@ -23,9 +23,6 @@ export default {
             axios.post(Telescope.basePath + '/generate-rules-api/view-cache')
                 .then((res) => {
                     console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
                     this.alertSuccess(res.data.result);
                 })
                 .catch(error => {
@@ -41,9 +38,6 @@ export default {
             axios.post(Telescope.basePath + '/generate-rules-api/view-clear')
                 .then((res) => {
                     console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
                     this.alertSuccess(res.data.result);
                 })
                 .catch(error => {

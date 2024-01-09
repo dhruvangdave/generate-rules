@@ -6,6 +6,9 @@ Route::get('dashboard', 'GenerateRulesController@index');
 
 Route::get('/{view?}', 'GenerateRulesController@index')->where('view', '(.*)')->name('generate-rules');
 
+Route::post('/generate-rules-api/rule-generator', 'RulesGeneratorController@index');
+Route::post('/generate-rules-api/rule-generator/generate', 'RulesGeneratorController@generate');
+
 // Artisan Commands...
 Route::post('/generate-rules-api/commands', 'CommandsController@index');
 Route::get('/generate-rules-api/commands/{telescopeEntryId}', 'CommandsController@show');
@@ -121,5 +124,12 @@ Route::post('/generate-rules-api/make-scope', 'Commands\\MakeCommandsController@
 Route::post('/generate-rules-api/make-seeder', 'Commands\\MakeCommandsController@makeSeeder');
 Route::post('/generate-rules-api/make-test', 'Commands\\MakeCommandsController@makeTest');
 Route::post('/generate-rules-api/make-view', 'Commands\\MakeCommandsController@makeView');
+
+Route::post('/generate-rules-api/migrate-fresh', 'Commands\\MigrateCommandsController@migrateFresh');
+Route::post('/generate-rules-api/migrate-install', 'Commands\\MigrateCommandsController@migrateInstall');
+Route::post('/generate-rules-api/migrate-refresh', 'Commands\\MigrateCommandsController@migrateRefresh');
+Route::post('/generate-rules-api/migrate-reset', 'Commands\\MigrateCommandsController@migrateReset');
+Route::post('/generate-rules-api/migrate-rollback', 'Commands\\MigrateCommandsController@migrateRollback');
+Route::post('/generate-rules-api/migrate-status', 'Commands\\MigrateCommandsController@migrateStatus');
 
 //Route::post('/generate-rules-api/clear-config', 'CommandsController@clearConfig');

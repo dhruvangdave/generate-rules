@@ -19,39 +19,13 @@ export default {
 
     methods: {
         envEncrypt() {
-            this.loadingEncrypt = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/env-encrypt')
-                .then((res) => {
-                    console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response.data.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingEncrypt = false;
-                });
+            const route = 'env-encryption';
+            const title = 'ENV Encryption';
+            this.$router.push({ name: 'command-logs-page', query: { route, title } });
         },
 
         envDecrypt() {
-            this.loadingDecrypt = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/env-decrypt', {'key': 'base64:Jdp0goCsdXdd7yaPmK5VAxFpTE5rsAIMhtcNtV/nOTQ='})
-                .then((res) => {
-                    console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response.data.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingDecrypt = false;
-                });
+            this.$router.push({ name: 'env-decryption' });
         },
     }
 }

@@ -23,21 +23,9 @@ export default {
 
     methods: {
         migrateFresh() {
-            this.loadingFresh = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/migrate-fresh')
-                .then((res) => {
-                    console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response.data.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingFresh = false;
-                });
+            const route = 'migrate-fresh';
+            const title = 'Migrate Fresh';
+            this.$router.push({ name: 'command-logs-page', query: { route, title } });
         },
 
         migrateInstall() {
@@ -59,21 +47,10 @@ export default {
         },
 
         migrateRefresh() {
-            this.loadingRefresh = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/migrate-refresh')
-                .then((res) => {
-                    console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response.data.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingRefresh = false;
-                });
+            const route = 'migrate-refresh';
+            const title = 'Migrate Refresh';
+            this.$router.push({ name: 'command-logs-page', query: { route, title } });
+            this.$router.push({ name: 'migrate-refresh' });
         },
 
         migrateReset() {
@@ -95,39 +72,15 @@ export default {
         },
 
         migrateRollback() {
-            this.loadingRollback = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/migrate-rollback')
-                .then((res) => {
-                    console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response.data.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingRollback = false;
-                });
+            const route = 'migrate-rollback';
+            const title = 'Migrate Rollback';
+            this.$router.push({ name: 'command-logs-page', query: { route, title } });
         },
 
         migrateStatus() {
-            this.loadingStatus = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/migrate-status')
-                .then((res) => {
-                    console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response.data.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingStatus = false;
-                });
+            const route = 'migrate-status';
+            const title = 'Migrate Status';
+            this.$router.push({ name: 'command-logs-page', query: { route, title } });
         },
     }
 }

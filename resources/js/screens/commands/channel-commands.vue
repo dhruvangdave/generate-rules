@@ -18,21 +18,9 @@ export default {
 
     methods: {
         channelList() {
-            this.loadingList = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/channel-list')
-                .then((res) => {
-                    console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response.data.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingList = false;
-                });
+            const route = 'channel-list';
+            const title = 'Channel List';
+            this.$router.push({ name: 'command-logs-page', query: { route, title } });
         },
     }
 }

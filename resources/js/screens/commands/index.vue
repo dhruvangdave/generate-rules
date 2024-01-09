@@ -84,10 +84,10 @@ export default {
             <package-commands/>
             <queue-commands/>
             <route-commands/>
-            <sail-commands/>
+<!--            <sail-commands/>-->
             <sanctum-commands/>
             <schedule-commands/>
-            <schema-commands/>
+<!--            <schema-commands/>-->
             <session-commands/>
             <storage-commands/>
             <stub-commands/>

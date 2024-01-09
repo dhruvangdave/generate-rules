@@ -18,21 +18,9 @@ export default {
 
     methods: {
         packageDiscover() {
-            this.loadingDiscover = true;
-            axios.post(Telescope.basePath + '/generate-rules-api/package-discover')
-                .then((res) => {
-                    console.log('res', res.data.result);
-                    this.message = res.data.result;
-                    this.errorMessage = null;
-
-                    this.alertSuccess(res.data.result);
-                })
-                .catch(error => {
-                    this.alertError('Error : ' + (error.response.data.error || error.message));
-                })
-                .finally(() => {
-                    this.loadingDiscover = false;
-                });
+            const route = 'package-discover';
+            const title = 'Package Discover';
+            this.$router.push({ name: 'command-logs-page', query: { route, title } });
         },
     }
 }
