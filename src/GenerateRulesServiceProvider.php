@@ -86,7 +86,7 @@ class GenerateRulesServiceProvider extends ServiceProvider
             ], ['generateRules-assets', 'laravel-assets']);
 
             $this->publishes([
-                __DIR__.'/../config' => config_path('generateRules.php'),
+                __DIR__.'/../config' => config_path(),
             ], ['generateRules-assets', 'laravel-assets']);
         }
     }

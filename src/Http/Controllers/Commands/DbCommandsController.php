@@ -40,7 +40,7 @@ class DbCommandsController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'class' => ['string', 'max:50', 'min:1', 'regex:/^[\w-]+$/']
+                'class' => ['sometimes', 'nullable', 'string', 'max:50', 'min:1', 'regex:/^[\w-]+$/']
             ], [
                 'class.regex' => 'The key must be a single word without spaces.'
             ]);

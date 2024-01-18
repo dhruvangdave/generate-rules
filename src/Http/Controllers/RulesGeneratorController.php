@@ -3,14 +3,8 @@
 namespace Dhruvang\GenerateRules\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Dhruvang\GenerateRules\App\Console\Commands\RuleGenerator;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Dhruvang\GenerateRules\GenerateRules;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 use JetBrains\PhpStorm\ArrayShape;
 use PhpParser\Error;

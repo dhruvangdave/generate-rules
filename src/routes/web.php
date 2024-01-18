@@ -9,9 +9,11 @@ Route::get('/{view?}', 'GenerateRulesController@index')->where('view', '(.*)')->
 Route::post('/generate-rules-api/rule-generator', 'RulesGeneratorController@index');
 Route::post('/generate-rules-api/rule-generator/generate', 'RulesGeneratorController@generate');
 
+Route::post('/generate-rules-api/relations-generator', 'RulesGeneratorController@index');
+Route::post('/generate-rules-api/relations-generator/generate', 'RelationsGeneratorController@generate');
+
 // Artisan Commands...
 Route::post('/generate-rules-api/commands', 'CommandsController@index');
-Route::get('/generate-rules-api/commands/{telescopeEntryId}', 'CommandsController@show');
 
 Route::post('/generate-rules-api/cache-clear', 'Commands\\CacheCommandsController@cacheClear');
 Route::post('/generate-rules-api/cache-forget', 'Commands\\CacheCommandsController@cacheForget');
@@ -131,5 +133,20 @@ Route::post('/generate-rules-api/migrate-refresh', 'Commands\\MigrateCommandsCon
 Route::post('/generate-rules-api/migrate-reset', 'Commands\\MigrateCommandsController@migrateReset');
 Route::post('/generate-rules-api/migrate-rollback', 'Commands\\MigrateCommandsController@migrateRollback');
 Route::post('/generate-rules-api/migrate-status', 'Commands\\MigrateCommandsController@migrateStatus');
+
+Route::post('/generate-rules-api/about', 'Commands\\CommonCommandsController@about');
+Route::post('/generate-rules-api/clear-compiled', 'Commands\\CommonCommandsController@clearCompiled');
+Route::post('/generate-rules-api/completion', 'Commands\\CommonCommandsController@completion');
+Route::post('/generate-rules-api/db', 'Commands\\CommonCommandsController@db');
+Route::post('/generate-rules-api/docs', 'Commands\\CommonCommandsController@docs');
+Route::post('/generate-rules-api/up', 'Commands\\CommonCommandsController@up');
+Route::post('/generate-rules-api/down', 'Commands\\CommonCommandsController@down');
+Route::post('/generate-rules-api/env', 'Commands\\CommonCommandsController@env');
+Route::post('/generate-rules-api/help', 'Commands\\CommonCommandsController@help');
+Route::post('/generate-rules-api/inspire', 'Commands\\CommonCommandsController@inspire');
+Route::post('/generate-rules-api/list', 'Commands\\CommonCommandsController@list');
+Route::post('/generate-rules-api/migrate', 'Commands\\CommonCommandsController@migrate');
+Route::post('/generate-rules-api/optimize', 'Commands\\CommonCommandsController@optimize');
+
 
 //Route::post('/generate-rules-api/clear-config', 'CommandsController@clearConfig');

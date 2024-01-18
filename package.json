@@ -17,7 +17,9 @@
         "lodash": "^4.17.19",
         "moment": "^2.29.4",
         "moment-timezone": "^0.5.40",
+        "monaco-editor-webpack-plugin": "^7.1.0",
         "popper.js": "^1.12",
+        "remark": "^15.0.1",
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.15.2",
         "sass-loader": "^11.0.1",
@@ -28,6 +30,7 @@
         "vue-loader": "^15.9.6",
         "vue-router": "^3.0.1",
         "vue-template-compiler": "^2.5.21",
+        "vue2-ace-editor": "^0.0.15",
         "webpack": "^5.89.0"
     }
 }

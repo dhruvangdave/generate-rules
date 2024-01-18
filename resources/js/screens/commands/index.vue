@@ -1,4 +1,5 @@
 <script>
+import CommonCommands from "./common-commands";
 import CacheCommands from "./cache-commands";
 import ConfigCommands from "./config-commands";
 import AuthCommands from "./auth-commands";
@@ -53,7 +54,8 @@ export default {
         NotificationsCommands,
         ModelCommands,
         MigrateCommands,
-        MakeCommands
+        MakeCommands,
+        CommonCommands
     },
 
     data() {
@@ -67,6 +69,7 @@ export default {
 <template>
     <index-screen title="Commands" resource="commands">
         <div slot="table-header">
+            <common-commands/>
             <auth-commands/>
             <cache-commands/>
             <channel-commands/>

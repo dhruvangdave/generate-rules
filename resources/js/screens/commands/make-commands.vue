@@ -1,9 +1,9 @@
 <script>
-import ButtonClose from "../../components/ButtonClose";
+import SecondaryButton from "../../components/SecondaryButton";
 import axios from "axios";
 
 export default {
-    components: {ButtonClose},
+    components: {SecondaryButton},
     computed: {
         isAnyLoading() {
             return this.loadingCast || this.loadingChannel || this.loadingCommand || this.loadingComponent || this.loadingController || this.loadingEvent || this.loadingException || this.loadingFactory || this.loadingJob || this.loadingListener || this.loadingMail || this.loadingMiddleware || this.loadingMigration || this.loadingModel || this.loadingNotification || this.loadingObserver || this.loadingPolicy || this.loadingProvider || this.loadingRequest || this.loadingResource || this.loadingRule || this.loadingScope || this.loadingSeeder || this.loadingTest || this.loadingView;
@@ -175,270 +175,231 @@ export default {
     <div slot="cache-commands">
         <h6 class="px-3 pt-3 mb-0 text-sm">Make Commands</h6>
         <div class="p-3 d-flex flex-wrap" style="gap: 1rem;">
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Cast"
-                    @click.prevent="makeCast">
-                    <span v-if="loadingCast" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Cast</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Channel"
-                    @click.prevent="makeChannel">
-                    <span v-if="loadingChannel" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Channel</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Command"
-                    @click.prevent="makeCommand">
-                    <span v-if="loadingCommand" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Command</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Component"
-                    @click.prevent="makeComponent">
-                    <span v-if="loadingComponent" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Component</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Controller"
-                    @click.prevent="makeController">
-                    <span v-if="loadingController" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Controller</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Event"
-                    @click.prevent="makeEvent">
-                    <span v-if="loadingEvent" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Event</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Exception"
-                    @click.prevent="makeException">
-                    <span v-if="loadingException" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Exception</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Factory"
-                    @click.prevent="makeFactory">
-                    <span v-if="loadingFactory" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Factory</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Job"
-                    @click.prevent="makeJob">
-                    <span v-if="loadingJob" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Job</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Listener"
-                    @click.prevent="makeListener">
-                    <span v-if="loadingListener" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Listener</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Mail"
-                    @click.prevent="makeMail">
-                    <span v-if="loadingMail" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Mail</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Middleware"
-                    @click.prevent="makeMiddleware">
-                    <span v-if="loadingMiddleware" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Middleware</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Migration"
-                    @click.prevent="makeMigration">
-                    <span v-if="loadingMigration" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Migration</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Model"
-                    @click.prevent="makeModel">
-                    <span v-if="loadingModel" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Model</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Notification"
-                    @click.prevent="makeNotification">
-                    <span v-if="loadingNotification" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Notification</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Observer"
-                    @click.prevent="makeObserver">
-                    <span v-if="loadingObserver" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Observer</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Policy"
-                    @click.prevent="makePolicy">
-                    <span v-if="loadingPolicy" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Policy</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Request"
-                    @click.prevent="makeRequest">
-                    <span v-if="loadingRequest" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Request</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Resource"
-                    @click.prevent="makeResource">
-                    <span v-if="loadingResource" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Resource</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Rule"
-                    @click.prevent="makeRule">
-                    <span v-if="loadingRule" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Rule</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Scope"
-                    @click.prevent="makeScope">
-                    <span v-if="loadingScope" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Scope</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Seeder"
-                    @click.prevent="makeSeeder">
-                    <span v-if="loadingSeeder" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Seeder</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make Test"
-                    @click.prevent="makeTest">
-                    <span v-if="loadingTest" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make Test</span>
-            </button>
-            <button class="btn btn-primary text-center" :disabled="isAnyLoading" title="Make View"
-                    @click.prevent="makeView">
-                    <span v-if="loadingView" class="icon spin fill-text-color">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             class="icon spin fill-text-color-white">
-                            <path
-                                d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
-                        </svg>
-                    </span>
-                <span v-else>Make View</span>
-            </button>
+            <secondary-button
+                buttonText="Make Cast"
+                title="Make Cast"
+                color="light"
+                :loading="loadingCast"
+                :isAnyLoading="isAnyLoading"
+                @click="makeCast"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Channel"
+                title="Make Channel"
+                color="light"
+                :loading="loadingChannel"
+                :isAnyLoading="isAnyLoading"
+                @click="makeChannel"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Command"
+                title="Make Command"
+                color="light"
+                :loading="loadingCommand"
+                :isAnyLoading="isAnyLoading"
+                @click="makeCommand"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Component"
+                title="Make Component"
+                color="light"
+                :loading="loadingComponent"
+                :isAnyLoading="isAnyLoading"
+                @click="makeComponent"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Controller"
+                title="Make Controller"
+                color="light"
+                :loading="loadingController"
+                :isAnyLoading="isAnyLoading"
+                @click="makeController"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Event"
+                title="Make Event"
+                color="light"
+                :loading="loadingEvent"
+                :isAnyLoading="isAnyLoading"
+                @click="makeEvent"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Exception"
+                title="Make Exception"
+                color="light"
+                :loading="loadingException"
+                :isAnyLoading="isAnyLoading"
+                @click="makeException"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Factory"
+                title="Make Factory"
+                color="light"
+                :loading="loadingFactory"
+                :isAnyLoading="isAnyLoading"
+                @click="makeFactory"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Job"
+                title="Make Job"
+                color="light"
+                :loading="loadingJob"
+                :isAnyLoading="isAnyLoading"
+                @click="makeJob"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Listener"
+                title="Make Listener"
+                color="light"
+                :loading="loadingListener"
+                :isAnyLoading="isAnyLoading"
+                @click="makeListener"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Mail"
+                title="Make Mail"
+                color="light"
+                :loading="loadingMail"
+                :isAnyLoading="isAnyLoading"
+                @click="makeMail"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Middleware"
+                title="Make Middleware"
+                color="light"
+                :loading="loadingMiddleware"
+                :isAnyLoading="isAnyLoading"
+                @click="makeMiddleware"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Migration"
+                title="Make Migration"
+                color="light"
+                :loading="loadingMigration"
+                :isAnyLoading="isAnyLoading"
+                @click="makeMigration"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Model"
+                title="Make Model"
+                color="light"
+                :loading="loadingModel"
+                :isAnyLoading="isAnyLoading"
+                @click="makeModel"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Notification"
+                title="Make Notification"
+                color="light"
+                :loading="loadingNotification"
+                :isAnyLoading="isAnyLoading"
+                @click="makeNotification"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Observer"
+                title="Make Observer"
+                color="light"
+                :loading="loadingObserver"
+                :isAnyLoading="isAnyLoading"
+                @click="makeObserver"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Policy"
+                title="Make Policy"
+                color="light"
+                :loading="loadingPolicy"
+                :isAnyLoading="isAnyLoading"
+                @click="makePolicy"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Provider"
+                title="Make Provider"
+                color="light"
+                :loading="loadingProvider"
+                :isAnyLoading="isAnyLoading"
+                @click="makeProvider"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Request"
+                title="Make Request"
+                color="light"
+                :loading="loadingRequest"
+                :isAnyLoading="isAnyLoading"
+                @click="makeRequest"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Resource"
+                title="Make Resource"
+                color="light"
+                :loading="loadingResource"
+                :isAnyLoading="isAnyLoading"
+                @click="makeResource"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Rule"
+                title="Make Rule"
+                color="light"
+                :loading="loadingRule"
+                :isAnyLoading="isAnyLoading"
+                @click="makeRule"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Seeder"
+                title="Make Seeder"
+                color="light"
+                :loading="loadingSeeder"
+                :isAnyLoading="isAnyLoading"
+                @click="makeSeeder"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Test"
+                title="Make Test"
+                color="light"
+                :loading="loadingTest"
+                :isAnyLoading="isAnyLoading"
+                @click="makeTest"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make View"
+                title="Make View"
+                color="light"
+                :loading="loadingView"
+                :isAnyLoading="isAnyLoading"
+                @click="makeView"
+            ></secondary-button>
+
+            <secondary-button
+                buttonText="Make Scope"
+                title="Make Scope"
+                color="light"
+                :loading="loadingScope"
+                :isAnyLoading="isAnyLoading"
+                @click="makeScope"
+            ></secondary-button>
         </div>
     </div>
 </template>
+

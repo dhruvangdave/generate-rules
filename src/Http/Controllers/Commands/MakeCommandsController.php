@@ -20,9 +20,19 @@ class MakeCommandsController extends Controller
     public function makeCast(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
-        return $this->runArtisanCommand('make:cast', ['name' => $validatedData['name']]);
+
+        $extras = $validatedData['extras'];
+
+        return $this->runArtisanCommand('make:cast', [
+            'name' => $validatedData['name'],
+            '--inbound' => $extras['inbound'] ?? false,
+            '--force' => $extras['force'] ?? false,
+            '--quiet' => $extras['quiet'] ?? false,
+            '--help' => $extras['help'] ?? false,
+        ]);
     }
 
     /**
@@ -34,9 +44,16 @@ class MakeCommandsController extends Controller
     public function makeChannel(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
-        return $this->runArtisanCommand('make:channel', ['name' => $validatedData['name']]);
+
+        return $this->runArtisanCommand('make:channel', [
+            'name' => $validatedData['name'],
+            '--force' => $extras['force'] ?? false,
+            '--quiet' => $extras['quiet'] ?? false,
+            '--help' => $extras['help'] ?? false,
+        ]);
     }
 
     /**
@@ -48,9 +65,18 @@ class MakeCommandsController extends Controller
     public function makeCommand(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
-        return $this->runArtisanCommand('make:command', ['name' => $validatedData['name']]);
+
+        return $this->runArtisanCommand('make:command', [
+            'name' => $validatedData['name'],
+            '--test' => $extras['test'] ?? false,
+            '--pest' => $extras['pest'] ?? false,
+            '--force' => $extras['force'] ?? false,
+            '--quiet' => $extras['quiet'] ?? false,
+            '--help' => $extras['help'] ?? false,
+        ]);
     }
 
     /**
@@ -62,8 +88,10 @@ class MakeCommandsController extends Controller
     public function makeComponent(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:component', ['name' => $validatedData['name']]);
     }
 
@@ -76,9 +104,13 @@ class MakeCommandsController extends Controller
     public function makeController(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
-        return $this->runArtisanCommand('make:controller', ['name' => $validatedData['name']]);
+
+        return $this->runArtisanCommand('make:controller', [
+            'name' => $validatedData['name'],
+        ]);
     }
 
     /**
@@ -90,8 +122,10 @@ class MakeCommandsController extends Controller
     public function makeEvent(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:event', ['name' => $validatedData['name']]);
     }
 
@@ -104,8 +138,10 @@ class MakeCommandsController extends Controller
     public function makeException(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:exception', ['name' => $validatedData['name']]);
     }
 
@@ -118,9 +154,11 @@ class MakeCommandsController extends Controller
     public function makeFactory(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'model' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
-        return $this->runArtisanCommand('make:factory', ['model' => $validatedData['model']]);
+
+        return $this->runArtisanCommand('make:factory', ['name' => $validatedData['name']]);
     }
 
     /**
@@ -132,8 +170,10 @@ class MakeCommandsController extends Controller
     public function makeJob(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:job', ['name' => $validatedData['name']]);
     }
 
@@ -146,8 +186,10 @@ class MakeCommandsController extends Controller
     public function makeListener(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:listener', ['name' => $validatedData['name']]);
     }
 
@@ -160,8 +202,10 @@ class MakeCommandsController extends Controller
     public function makeMail(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:mail', ['name' => $validatedData['name']]);
     }
 
@@ -174,8 +218,10 @@ class MakeCommandsController extends Controller
     public function makeMiddleware(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:middleware', ['name' => $validatedData['name']]);
     }
 
@@ -189,8 +235,9 @@ class MakeCommandsController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string',
-            // Add additional validation rules for other migration parameters if needed
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:migration', ['name' => $validatedData['name']]);
     }
 
@@ -203,8 +250,10 @@ class MakeCommandsController extends Controller
     public function makeModel(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:model', ['name' => $validatedData['name']]);
     }
 
@@ -217,8 +266,10 @@ class MakeCommandsController extends Controller
     public function makeNotification(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:notification', ['name' => $validatedData['name']]);
     }
 
@@ -231,8 +282,10 @@ class MakeCommandsController extends Controller
     public function makeObserver(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'model' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:observer', ['model' => $validatedData['model']]);
     }
 
@@ -245,8 +298,10 @@ class MakeCommandsController extends Controller
     public function makePolicy(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:policy', ['name' => $validatedData['name']]);
     }
 
@@ -259,8 +314,10 @@ class MakeCommandsController extends Controller
     public function makeProvider(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:provider', ['name' => $validatedData['name']]);
     }
 
@@ -273,8 +330,10 @@ class MakeCommandsController extends Controller
     public function makeRequest(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:request', ['name' => $validatedData['name']]);
     }
 
@@ -287,8 +346,10 @@ class MakeCommandsController extends Controller
     public function makeResource(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:resource', ['name' => $validatedData['name']]);
     }
 
@@ -301,8 +362,10 @@ class MakeCommandsController extends Controller
     public function makeSeeder(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:seeder', ['name' => $validatedData['name']]);
     }
 
@@ -315,8 +378,10 @@ class MakeCommandsController extends Controller
     public function makeTest(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:test', ['name' => $validatedData['name']]);
     }
 
@@ -329,8 +394,10 @@ class MakeCommandsController extends Controller
     public function makeView(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'extras' => 'array'
         ]);
+
         return $this->runArtisanCommand('make:view', ['name' => $validatedData['name']]);
     }
 
