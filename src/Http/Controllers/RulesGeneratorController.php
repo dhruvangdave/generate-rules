@@ -56,7 +56,11 @@ class RulesGeneratorController extends Controller
      */
     public function generate(Request $request): JsonResponse
     {
-        $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
+        $parserFactory = new ParserFactory();
+        $parser = method_exists($parserFactory, 'create')
+            ? $parserFactory->create(ParserFactory::PREFER_PHP7)
+            : $parserFactory->createForHostVersion();
+
         try {
             $parsedData = $parser->parse($request->get('data') ?? '');
 
